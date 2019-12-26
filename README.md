@@ -9,22 +9,22 @@ An auto tracker for Ocarina of Time Randomizer
 
 ## Todo
 - Missing checks
-  - [ ] Talon's Cuccos
-  - [ ] Skulltulas
-  - [ ] Cows
-  - [ ] Scrubs
+  - Talon's Cuccos
+  - Skulltulas
+  - Cows
+  - Scrubs
 - Broken/Missing logic
-  - [ ] Water Temple
-  - [ ] Graveyard Redead
+  - Water Temple
+  - Graveyard Redead
 - Displays
-  - [ ] Upgrades
-  - [ ] Songs
-  - [ ] Medallions
-  - [ ] Jewels
-  - [ ] Skulltulas
-- [ ] Open forest/temple/fountain/ganon logic
-- [ ] Styling
-- [ ] Clean up code
+  - Upgrades
+  - Songs
+  - Medallions
+  - Jewels
+  - Skulltulas
+- Open forest/temple/fountain/ganon logic
+- Styling
+- Clean up code
 
 #### Build Setup
 
