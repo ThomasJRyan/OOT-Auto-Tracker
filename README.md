@@ -6,6 +6,9 @@ An auto tracker for Ocarina of Time Randomizer
 - A complete auto tracker that will remove the need to manually track items and checks
 - Full logic checking
 - Allow for different types of starting settings
+- Be as uninstrustive as possible
+- Require minimal user input
+- Look decent
 
 ## Todo
 - Missing checks
