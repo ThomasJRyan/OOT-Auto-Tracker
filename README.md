@@ -13,6 +13,7 @@ An auto tracker for Ocarina of Time Randomizer
 ## Todo
 - Missing checks
   - Talon's Cuccos
+  - Biggoron Sword
   - Skulltulas
   - Cows
   - Scrubs
