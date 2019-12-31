@@ -6,25 +6,29 @@ An auto tracker for Ocarina of Time Randomizer
 - A complete auto tracker that will remove the need to manually track items and checks
 - Full logic checking
 - Allow for different types of starting settings
+- Be as uninstrustive as possible
+- Require minimal user input
+- Look decent
 
 ## Todo
 - Missing checks
-  - [ ] Talon's Cuccos
-  - [ ] Skulltulas
-  - [ ] Cows
-  - [ ] Scrubs
+  - Talon's Cuccos
+  - Biggoron Sword
+  - Skulltulas
+  - Cows
+  - Scrubs
 - Broken/Missing logic
-  - [ ] Water Temple
-  - [ ] Graveyard Redead
+  - Water Temple
+  - Graveyard Redead
 - Displays
-  - [ ] Upgrades
-  - [ ] Songs
-  - [ ] Medallions
-  - [ ] Jewels
-  - [ ] Skulltulas
-- [ ] Open forest/temple/fountain/ganon logic
-- [ ] Styling
-- [ ] Clean up code
+  - Upgrades
+  - Songs
+  - Medallions
+  - Jewels
+  - Skulltulas
+- Open forest/temple/fountain/ganon logic
+- Styling
+- Clean up code
 
 #### Build Setup
 
