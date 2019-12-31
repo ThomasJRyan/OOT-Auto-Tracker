@@ -18,7 +18,6 @@ An auto tracker for Ocarina of Time Randomizer
   - Cows
   - Scrubs
 - Broken/Missing logic
-  - Water Temple
   - Graveyard Redead
 - Displays
   - Upgrades
