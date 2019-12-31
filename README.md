@@ -25,7 +25,6 @@ An auto tracker for Ocarina of Time Randomizer
   - Medallions
   - Jewels
   - Skulltulas
-- Open forest/temple/fountain/ganon logic
 - Styling
 - Clean up code
 
