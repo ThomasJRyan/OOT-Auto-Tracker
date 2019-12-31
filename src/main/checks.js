@@ -38,7 +38,7 @@ const checks = [
 						"check": "Deku Theater Skull Mask",
 						"requirements": [
                             "is_child()",
-                            "has_item('zeldas_letter')"
+                            "has_item('skull_mask')"
                         ],
 						"type": "Event"
 					},
@@ -48,7 +48,7 @@ const checks = [
 						"check": "Deku Theater Mask of Truth",
 						"requirements": [
                             "is_child()",
-                            "has_item('zeldas_letter')"
+                            "has_item('mask_of_truth')"
                         ],
 						"type": "Event"
 					}
@@ -426,27 +426,21 @@ const checks = [
 						"bits": "00000000000000000000000000000100",
 						"location": "0",
 						"check": "Compass Room Chest",
-						"requirements": [
-                            "has_item('deku_stick')"
-                        ],
+						"requirements": true,
 						"type": "Chest"
 					},
 					{
 						"bits": "00000000000000000000000001000000",
 						"location": "0",
 						"check": "Compass Room Side Chest",
-						"requirements": [
-                            "has_item('deku_stick')"
-                        ],
+						"requirements": true,
 						"type": "Chest"
 					},
 					{
 						"bits": "00000000000000000000000000010000",
 						"location": "0",
 						"check": "Basement Chest",
-						"requirements": [
-                            "has_item('deku_stick') | can_use_fire()"
-                        ],
+						"requirements": true,
 						"type": "Chest"
 					},
 					{
@@ -1668,7 +1662,7 @@ const checks = [
 					}
 				],
 				"access_requirements": [
-                    "is_open('ganons_tower')",
+                    "is_open('ganons_castle')",
                     "is_adult()"
                 ]
 			},
@@ -2961,77 +2955,118 @@ const checks = [
 						"bits": "00000000000000000000000000000001",
 						"location": "5",
 						"check": "Cracked Wall Chest",
-						"requirements": true,
+						"requirements": [
+							"can_play('zeldas_lullably')",
+							"can_use_explosives()",
+							"has_equipment('iron_boots')"
+						],
 						"type": "Chest"
 					},
 					{
 						"bits": "00000000000000000000000000000010",
 						"location": "5",
 						"check": "Torches Chest",
-						"requirements": true,
+						"requirements": [
+							"has_item('bow') | can_use_fire()",
+							"can_play('zeldas_lullably') | has_equipment('iron_boots')"
+						],
 						"type": "Chest"
 					},
 					{
 						"bits": "00000000000000000000000000000100",
 						"location": "5",
 						"check": "Map Chest",
-						"requirements": true,
+						"requirements": [
+							"has_item('hookshot') | has_item('bow') | has_equipment('hover_boots')"
+						],
 						"type": "Chest"
 					},
 					{
 						"bits": "00000000000000000000000000001000",
 						"location": "5",
 						"check": "River Chest",
-						"requirements": true,
+						"requirements": [
+							"can_play('song_of_time')",
+							"has_item('bow')",
+							"has_item('hookshot')"
+						],
 						"type": "Chest"
 					},
 					{
 						"bits": "00000000000000000000000000100000",
 						"location": "5",
 						"check": "Boss Key Chest",
-						"requirements": true,
+						"requirements": [
+							"has_equipment('iron_boots')",
+							"(can_use_explosive() & has_strength(2)) | has_equipment('hover_boots')"
+						],
 						"type": "Chest"
 					},
 					{
 						"bits": "00000000000000000000000001000000",
 						"location": "5",
 						"check": "Central Pillar Chest",
-						"requirements": true,
+						"requirements": [
+							"has_item('hookshot')",
+							"has_equipment('iron_boots')",
+							"has_equipment('zoras_tunic')",
+							"has_item('bow') | can_use_fire()"
+						],
 						"type": "Chest"
 					},
 					{
 						"bits": "00000000000000000000000010000000",
 						"location": "5",
 						"check": "Dark Link Chest",
-						"requirements": true,
+						"requirements": [
+							"has_item('hookshot')"
+						],
 						"type": "Chest"
 					},
 					{
 						"bits": "00000000000000000000000100000000",
 						"location": "5",
 						"check": "Central Bow Target Chest",
-						"requirements": true,
+						"requirements": [
+							"has_strength(2)",
+							"can_play('zeldas_lullaby')",
+							"has_item('bow')",
+							"has_item('longshot')"
+						],
 						"type": "Chest"
 					},
 					{
 						"bits": "00000000000000000000001000000000",
 						"location": "5",
 						"check": "Compass Chest",
-						"requirements": true,
+						"requirements": [
+							"can_play('zeldas_lullaby') | has_equipment('iron_boots')",
+							"has_item('hookshot')"
+						],
 						"type": "Chest"
 					},
 					{
 						"bits": "00000000000000000000010000000000",
 						"location": "5",
 						"check": "Dragon Chest",
-						"requirements": true,
+						"requirements": [
+							"has_strength(2)",
+							"can_play('zeldas_lullaby')",
+							"has_equipment('iron_boots')",
+							"has_item('hookshot')"
+						],
 						"type": "Chest"
 					},
 					{
 						"bits": "000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
 						"location": "5",
 						"check": "South Basement",
-						"requirements": true,
+						"requirements": [
+							"can_use_explosives()",
+							"can_play('zeldas_lullaby')",
+							"has_equipment('iron_boots')",
+							"has_item('hookshot') | has_equipment('hover_boots')"
+						],
 						"type": "Skull"
 					},
 					{

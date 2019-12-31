@@ -44,7 +44,11 @@
       "icon": "build/icons/icon.icns"
     },
     "win": {
-      "icon": "build/icons/icon.ico"
+      "icon": "build/icons/icon.ico",
+      "target": ["portable"]
+    },
+    "portable": {
+      "artifactName": "OOT_Spoilerlog_Viewer.exe"
     },
     "linux": {
       "icon": "build/icons"

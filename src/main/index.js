@@ -38,8 +38,10 @@ serverApp.get('/send_inv', (req, res) => {
     invType: req.query.invType,
     invData: JSON.parse(req.query.invData),
   }
-  console.log(data)
-  console.log('send_inv:'+data['invType'])
+  // if (data.invType == "upgrades") {
+  //   console.log(data)
+  //   console.log('send_inv:'+data['invType'])
+  // }
   mainWindow.webContents.send('send_inv:'+data['invType'], data.invData)
 })
 
