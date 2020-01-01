@@ -26,6 +26,7 @@ serverApp.get('/send_check', (req, res) => {
   }
   // console.log(data)
   checks.push(data.location + ":" + data.type + ":" + data.bits)
+  console.log(checks)
   // mainWindow.webContents.on('did-finish-load', () => {
     // mainWindow.webContents.send('test', 'Hello World')
     mainWindow.webContents.send('send_checks', checks)
@@ -39,20 +40,35 @@ serverApp.get('/send_inv', (req, res) => {
     invData: JSON.parse(req.query.invData),
   }
   // if (data.invType == "upgrades") {
-  //   console.log(data)
-  //   console.log('send_inv:'+data['invType'])
+    console.log(data)
+    console.log('send_inv:'+data['invType'])
   // }
   mainWindow.webContents.send('send_inv:'+data['invType'], data.invData)
 })
 
-ipcMain.on('get_check', (event, data) => {
-  // event.reply('send_checks', checks)
-  event.returnValue = checks
-  // checks = []
-})
+// ipcMain.on('get_check', (event, data) => {
+//   // event.reply('send_checks', checks)
+//   event.returnValue = checks
+//   // checks = []
+// })
 
 ipcMain.on('startup', (event, data) => {
   event.sender.send('send_file_checks', [file_checks, checks])
+})
+
+let storedSize = null
+ipcMain.on('toggle_checks', (event, data) => {
+  console.log(storedSize)
+  if (storedSize == null){
+    storedSize = mainWindow.getSize()
+    mainWindow.setSize(250, 510)
+  } else {
+    mainWindow.setSize(
+      storedSize[0],
+      storedSize[1]
+    )
+    storedSize = null
+  }
 })
 
 serverApp.listen(port, () => console.log("Server running"))

@@ -2,6 +2,8 @@ local http = require("socket.http")
 
 local locations = {}
 
+local currentLocation = mainmemory.read_u16_be(0x1C8544)
+
 local events = mainmemory.readbyterange(0x11B4A3, 97)
 local skulls = mainmemory.readbyterange(0x11B46B, 25)
 
@@ -13,6 +15,10 @@ local upgrades = mainmemory.readbyterange(0x11A670, 4)
 local questitems = mainmemory.readbyterange(0x11A673, 5)
 local skulltulas = mainmemory.read_u16_be(0x11A6A0)
 local age = mainmemory.read_u16_be(0x11A5D6)
+local magic = mainmemory.read_u8(0x11A602)
+local fishing = mainmemory.read_u8(0x11B492)
+
+local send_initial = true
 
 -- Send check to GUI
 function sendCheckToServer ()
@@ -93,7 +99,7 @@ while true do
   end
 
   -- If a chest is opened, send to GUI
-  if table.concat(locations[mainmemory.read_u16_be(0x1C8544)]['Chests']) ~= table.concat(mainmemory.readbyterange(0x1CA1D7, 5)) then
+  if table.concat(locations[mainmemory.read_u16_be(0x1C8544)]['Chests']) ~= table.concat(mainmemory.readbyterange(0x1CA1D7, 5)) or send_initial then
     local data = ""
     for i=1,4 do
       data = data .. table.concat(toBits(mainmemory.readbyterange(0x1CA1D7, 5)[i] - locations[mainmemory.read_u16_be(0x1C8544)]['Chests'][i], 8))
@@ -105,7 +111,7 @@ while true do
   end
 
   -- If an item is picked up, send to GUI
-  if table.concat(locations[mainmemory.read_u16_be(0x1C8544)]['Items']) ~= table.concat(mainmemory.readbyterange(0x1CA1E3, 5)) then
+  if table.concat(locations[mainmemory.read_u16_be(0x1C8544)]['Items']) ~= table.concat(mainmemory.readbyterange(0x1CA1E3, 5)) or send_initial then
     local data = ""
     for i=1,4 do
       data = data .. table.concat(toBits(mainmemory.readbyterange(0x1CA1E3, 5)[i] - locations[mainmemory.read_u16_be(0x1C8544)]['Items'][i], 8))
@@ -117,7 +123,7 @@ while true do
   end
 
   -- If a skull is obtained, send to GUI
-  if table.concat(skulls) ~= table.concat(mainmemory.readbyterange(0x11B46B, 25)) then
+  if table.concat(skulls) ~= table.concat(mainmemory.readbyterange(0x11B46B, 25)) or send_initial then
     local data = ""
     for i=1,24 do
       data = data .. table.concat(toBits(mainmemory.readbyterange(0x11B46B, 25)[i] - skulls[i], 8))
@@ -129,7 +135,7 @@ while true do
   end
 
   -- If an event occurs, send to GUI
-  if table.concat(events) ~= table.concat(mainmemory.readbyterange(0x11B4A3, 97)) then
+  if table.concat(events) ~= table.concat(mainmemory.readbyterange(0x11B4A3, 97)) or send_initial then
     local data = ""
     for i=1,96 do
       data = data .. table.concat(toBits(mainmemory.readbyterange(0x11B4A3, 97)[i] - events[i], 8))
@@ -140,18 +146,36 @@ while true do
     sendCheckToServer()
   end
 
+  -- If fish caught, send to GUI
+  -- if fishing ~= mainmemory.read_u8(0x11B492) or send_initial then
+  --   fishing = mainmemory.read_u8(0x11B492)
+  --   local tmp = toBits(fishing, 8)
+  --   print(tmp)
+  --   sendInvToServer('fish', tmp)
+  -- end
+  if fishing ~= mainmemory.read_u8(0x11B492) or send_initial then
+    -- print(table.concat(toBits(mainmemory.read_u8(0x11B492) - fishing, 8)))
+    local data = table.concat(toBits(mainmemory.read_u8(0x11B492) - fishing, 8))
+    -- fishing = mainmemory.read_u8(0x11B492)
+    checkBits = data
+    checkType = "Event"
+    sendCheckToServer()
+  end
+
+  fishing = mainmemory.read_u8(0x11B492)
+
 
   -- Inventory
 
   -- When a new item is obtained, send it
-  if table.concat(items) ~= table.concat(mainmemory.readbyterange(0x11A643, 25)) then
+  if table.concat(items) ~= table.concat(mainmemory.readbyterange(0x11A643, 25)) or send_initial then
     items = mainmemory.readbyterange(0x11A643, 25)
     sendInvToServer('items', mainmemory.readbyterange(0x11A644, 24))
   end
 
   -- When new equipment is obtained, send it
   -- TODO: Optimize this and reduce send time
-  if table.concat(equipment) ~= table.concat(mainmemory.readbyterange(0x11A66B,3)) then
+  if table.concat(equipment) ~= table.concat(mainmemory.readbyterange(0x11A66B,3)) or send_initial then
     equipment = mainmemory.readbyterange(0x11A66B,3)
     local tmp = toBits(equipment[1], 8)
     for i=9,16 do
@@ -164,7 +188,7 @@ while true do
 
   -- When an upgrade is obtained, send it
   -- TODO: Optimize this and reduce send time
-  if table.concat(upgrades) ~= table.concat(mainmemory.readbyterange(0x11A670, 4)) then
+  if table.concat(upgrades) ~= table.concat(mainmemory.readbyterange(0x11A670, 4)) or send_initial then
     upgrades = mainmemory.readbyterange(0x11A670, 4)
     local tmp = toBits(upgrades[1], 8)
     for i=9,16 do
@@ -182,7 +206,7 @@ while true do
 
   -- When a quest item is obtained, send it
   -- TODO: Optimize this and reduce send time
-  if table.concat(questitems) ~= table.concat(mainmemory.readbyterange(0x11A673, 5)) then
+  if table.concat(questitems) ~= table.concat(mainmemory.readbyterange(0x11A673, 5)) or send_initial then
     questitems = mainmemory.readbyterange(0x11A673, 5)
     local tmp = toBits(questitems[1], 8)
     for i=9,16 do
@@ -204,15 +228,23 @@ while true do
   end
 
   -- When a skulltula is collected
-  if skulltulas ~= mainmemory.read_u16_be(0x11A6A0) then
+  if skulltulas ~= mainmemory.read_u16_be(0x11A6A0) or send_initial then
     skulltulas = mainmemory.read_u16_be(0x11A6A0)
     sendInvToServer('skulls', {skulltulas})
   end
 
   -- When age changes
-  if age ~= mainmemory.read_u16_be(0x11A5D6) then
+  if age ~= mainmemory.read_u16_be(0x11A5D6) or send_initial then
     age = mainmemory.read_u16_be(0x11A5D6)
     sendInvToServer('age', {age})
   end
+
+  -- When magic is obtained
+  if magic ~= mainmemory.read_u8(0x11A602) or send_initial then
+    magic = mainmemory.read_u8(0x11A602)
+    sendInvToServer('magic', {magic})
+  end
+
+  send_initial = false
   emu.yield()
 end

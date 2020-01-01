@@ -234,7 +234,7 @@ const checks = [
 				],
 				"access_requirements": [
                     "is_adult()",
-                    "has_item('hookshot')"
+                    "has_item('hookshot') | has_item('longshot')"
                 ]
 			},
 			{
@@ -275,7 +275,7 @@ const checks = [
 						"check": "House of Twins",
 						"requirements": [
 							"is_adult()",
-							"has_item('hookshot')"
+							"has_item('hookshot') | has_item('longshot')"
 						],
 						"type": "Skull"
 					}
@@ -291,7 +291,7 @@ const checks = [
 						"check": "Sheik in Forest",
 						"requirements": [
                             "is_adult()",
-                            "can_play('sarias_song') | can_play('minuet_of_forest') | has_item('hookshot')"
+                            "can_play('sarias_song') | can_play('minuet_of_forest') | has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Event"
 					},
@@ -301,7 +301,7 @@ const checks = [
 						"check": "Song from Saria",
 						"requirements": [
                             "is_child()",
-                            "has_item('ocarina')"
+							"has_item('zeldas_letter')"
                         ],
 						"type": "Event"
 					},
@@ -311,7 +311,7 @@ const checks = [
 						"check": "Sacred Forest Meadow",
 						"requirements": [
                             "is_adult()",
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Skull"
 					}
@@ -337,7 +337,7 @@ const checks = [
 						"check": "Ocarina Memory Game",
 						"requirements": [
                             "is_child()",
-                            "has_item('ocarina')"
+                            "has_item('ocarina') | has_item('ocarina_of_time')"
                         ],
 						"type": "Event"
 					},
@@ -449,7 +449,8 @@ const checks = [
 						"check": "Beating Deku",
 						"requirements": [
                             "has_item('deku_stick') | has_item('kokiri_sword')",
-                            "has_item('deku_nut') | has_item('slingshot')"
+							"has_item('deku_nut') | has_item('slingshot')",
+							"has_equipment('deku_shield')"
                         ],
 						"type": "Event"
 					},
@@ -459,7 +460,8 @@ const checks = [
 						"check": "Queen Gohma Heart",
 						"requirements": [
                             "has_item('deku_stick') | has_item('kokiri_sword')",
-                            "has_item('deku_nut') | has_item('slingshot')"
+							"has_item('deku_nut') | has_item('slingshot')",
+							"has_equipment('deku_shield')"
                         ],
 						"type": "Item"
 					},
@@ -617,7 +619,7 @@ const checks = [
 						"check": "Valley Grotto",
 						"requirements": [
                             "can_use_fire()",
-                            "has_item('hookshot') | has_item('boomerang')"
+                            "has_item('hookshot') | has_item('longshot') | has_item('boomerang')"
                         ],
 						"type": "Skull"
 					},
@@ -626,7 +628,7 @@ const checks = [
 						"location": "62",
 						"check": "Field Near Kakariko Grotto",
 						"requirements": [
-                            "has_item('hookshot') | has_item('boomerang')"
+                            "has_item('hookshot') | has_item('longshot') | has_item('boomerang')"
                         ],
 						"type": "Skull"
 					}
@@ -645,8 +647,18 @@ const checks = [
 						"requirements": [
                             "is_child()",
                             "has_item('zeldas_letter')",
-                            "has_item('ocarina')"
+                            "has_item('ocarina') | has_item('ocarina_of_time')"
                         ],
+						"type": "Event"
+					},
+					{
+						"bits": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+						"location": "76",
+						"check": "Talon's Cuccos",
+						"requirements": [
+                            "is_child()",
+                            "has_item('zeldas_letter')",
+						],
 						"type": "Event"
 					},
 					{
@@ -798,7 +810,7 @@ const checks = [
 						"check": "Early Silver Rupee Chest",
 						"requirements": [
                             "has_equipment('hover_boots')",
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},
@@ -817,7 +829,7 @@ const checks = [
 						"check": "Invisible Blades Visible Chest",
 						"requirements": [
                             "can_use_explosives()",
-                            "has_item('hookshot') | has_item('bow')",
+                            "has_item('hookshot') | has_item('longshot') | has_item('bow')",
                             "has_equipment('hover_boots')"
                         ],
 						"type": "Chest"
@@ -828,7 +840,7 @@ const checks = [
 						"check": "Invisible Blades Invisible Chest",
 						"requirements": [
                             "can_use_explosives()",
-                            "has_item('hookshot') | has_item('bow')",
+                            "has_item('hookshot') | has_item('longshot') | has_item('bow')",
                             "has_equipment('hover_boots')"
                         ],
 						"type": "Chest"
@@ -869,7 +881,7 @@ const checks = [
 						"check": "Invisible Spikes Chest",
 						"requirements": [
                             "can_use_explosives()",
-                            "has_item('hookshot')",
+                            "has_item('hookshot') | has_item('longshot')",
                             "has_equipment('hover_boots')"
                         ],
 						"type": "Chest"
@@ -880,7 +892,7 @@ const checks = [
 						"check": "Freestanding Key",
 						"requirements": [
                             "can_use_explosives()",
-                            "has_item('hookshot')",
+                            "has_item('hookshot') | has_item('longshot')",
                             "has_equipment('hover_boots')"
                         ],
 						"type": "Item"
@@ -891,7 +903,7 @@ const checks = [
 						"check": "Wind Hint Chest",
 						"requirements": [
                             "can_use_explosives()",
-                            "has_item('hookshot')",
+                            "has_item('hookshot') | has_item('longshot')",
                             "has_equipment('hover_boots')"
                         ],
 						"type": "Chest"
@@ -902,7 +914,7 @@ const checks = [
 						"check": "After Wind Enemy Chest",
 						"requirements": [
                             "can_use_explosives()",
-                            "has_item('hookshot')",
+                            "has_item('hookshot') | has_item('longshot')",
                             "has_equipment('hover_boots')"
                         ],
 						"type": "Chest"
@@ -913,7 +925,7 @@ const checks = [
 						"check": "After Wind Hidden Chest",
 						"requirements": [
                             "can_use_explosives()",
-                            "has_item('hookshot')",
+                            "has_item('hookshot') | has_item('longshot')",
                             "has_equipment('hover_boots')"
                         ],
 						"type": "Chest"
@@ -925,7 +937,7 @@ const checks = [
 						"requirements": [
                             "can_use_explosives()",
                             "can_play('zeldas_lullaby')",
-                            "has_item('hookshot')",
+                            "has_item('hookshot') | has_item('longshot')",
                             "has_strength(1) | has_item(hookshot)",
                             "has_equipment('hover_boots')"
                         ],
@@ -939,7 +951,7 @@ const checks = [
                             "can_use_explosives()",
                             "can_use_fire()",
                             "can_play('zeldas_lullaby')",
-                            "has_item('hookshot')",
+                            "has_item('hookshot') | has_item('longshot')",
                             "has_strength(1) | has_item(hookshot)",
                             "has_equipment('hover_boots')"
                         ],
@@ -953,7 +965,7 @@ const checks = [
                             "can_use_explosives()",
                             "can_use_fire()",
                             "can_play('zeldas_lullaby')",
-                            "has_item('hookshot')",
+                            "has_item('hookshot') | has_item('longshot')",
                             "has_strength(1) | has_item(hookshot)",
                             "has_equipment('hover_boots')"
                         ],
@@ -965,7 +977,7 @@ const checks = [
 						"check": "Bongo Bongo Heart",
 						"requirements": [
                             "can_use_explosives()",
-                            "has_item('hookshot')",
+                            "has_item('hookshot') | has_item('longshot')",
                             "has_equipment('hover_boots')"
                         ],
 						"type": "Item"
@@ -1010,26 +1022,26 @@ const checks = [
                     "is_adult()",
                     "has_item('dins_fire')",
                     "has_magic()",
-                    "has_item('hookshot') | has_equipment('hover_boots')"
+                    "has_item('hookshot') | has_item('longshot') | has_equipment('hover_boots')"
                 ]
 			},
-			// {
-			// 	"area": "Grave (Redead)",
-			// 	"checks": [
-			// 		{
-			// 			"bits": "00000000000000000000000000000001",
-			// 			"location": "63",
-			// 			"check": "Heart Piece Grave Chest",
-			// 			"requirements": [
-            //                 "can_play('suns_song')"
-            //             ],
-			// 			"type": "Chest"
-			// 		}
-			// 	],
-			// 	"access_requirements": [
-            //         "is_adult() | (is_child() & can_leave_forest())"
-            //     ]
-			// },
+			{
+				"area": "Grave (Redead)",
+				"checks": [
+					{
+						"bits": "00000000000000000000000000000001",
+						"location": "63",
+						"check": "Heart Piece Grave Chest",
+						"requirements": [
+                            "can_play('suns_song')"
+                        ],
+						"type": "Chest"
+					}
+				],
+				"access_requirements": [
+                    "is_adult() | (is_child() & can_leave_forest())"
+                ]
+			},
 			{
 				"area": "Bottom of the Well",
 				"checks": [
@@ -1196,7 +1208,9 @@ const checks = [
 						"bits": "00000001000000000000000000000000",
 						"location": "55",
 						"check": "Cow",
-						"requirements": true,
+						"requirements": [
+							"can_play('eponas_song')"
+						],
 						"type": "Item"
 					}
 				],
@@ -1290,7 +1304,7 @@ const checks = [
 					{
 						"bits": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
 						"location": "82",
-						"check": "Anjus Chickens Item",
+						"check": "Anjus Cuccos Item",
 						"requirements": [
                             "is_child()"
                         ],
@@ -1362,7 +1376,7 @@ const checks = [
 						"location": "82",
 						"check": "Above Impa's House",
 						"requirements": [
-                            "(is_child() & can_child_attack()) | (is_adult() & has_item('hookshot'))"
+                            "(is_child() & can_child_attack()) | (is_adult() & (has_item('hookshot') | has_item('longshot')))"
                         ],
 						"type": "Skull"
 					}
@@ -1487,7 +1501,7 @@ const checks = [
 						"location": "72",
 						"check": "Song at Windmill",
 						"requirements": [
-                            "has_item('ocarina')"
+                            "has_item('ocarina') | has_item('ocarina_of_time')"
                         ],
 						"type": "Event"
 					},
@@ -1862,7 +1876,7 @@ const checks = [
 						"location": "13",
 						"check": "Spirit Trial First Chest",
 						"requirements": [
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},
@@ -1871,7 +1885,7 @@ const checks = [
 						"location": "13",
 						"check": "Spirit Trial Second Chest",
 						"requirements": [
-                            "has_item('hookshot')",
+                            "has_item('hookshot') | has_item('longshot')",
                             "has_item('bombchus')"
                         ],
 						"type": "Chest"
@@ -1983,7 +1997,7 @@ const checks = [
 						"check": "Volcano Freestanding PoH",
 						"requirements": [
                             "is_adult()",
-                            "(has_item('beans') & (can_play('bolero_of_fire') | has_item('hookshot'))) | has_item('hover_boots')"
+                            "(has_item('beans') & (can_play('bolero_of_fire') | has_item('hookshot') | has_item('longshot'))) | has_item('hover_boots')"
                         ],
 						"type": "Item"
 					},
@@ -2179,7 +2193,7 @@ const checks = [
 				],
 				"access_requirements": [
                     "is_adult()",
-                    "can_play('bolero_of_fire') | has_item('hookshot') | has_equipment('hover_boots')"
+                    "can_play('bolero_of_fire') | has_item('hookshot') | has_item('longshot') | has_equipment('hover_boots')"
                 ]
 			},
 			{
@@ -2311,7 +2325,7 @@ const checks = [
 						"check": "Sheik in Crater",
 						"requirements": [
                             "is_adult()",
-                            "has_item('hookshot') | has_equipment('hover_boots') | can_play('bolero_of_fire')"
+                            "has_item('hookshot') | has_item('longshot') | has_equipment('hover_boots') | can_play('bolero_of_fire')"
                         ],
 						"type": "Event"
 					},
@@ -2441,7 +2455,7 @@ const checks = [
 						"check": "Center Platform",
 						"requirements": [
                             "is_adult()",
-                            "has_item('hookshot') | has_item('bow')"
+                            "has_item('hookshot') | has_item('longshot') | has_item('bow')"
                         ],
 						"type": "Skull"
 					},
@@ -2463,7 +2477,7 @@ const checks = [
 		],
         "backgroundColour": "#990000",
         "colour": "black",
-		"region": "Death Moutain"
+		"region": "Death Mountain"
     },
     // Zora's Domain
 	{
@@ -2553,7 +2567,7 @@ const checks = [
 						"check": "Above Bridge",
 						"requirements": [
                             "is_adult()",
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Skull"
 					},
@@ -2563,7 +2577,7 @@ const checks = [
 						"check": "Near Raised Grottos",
 						"requirements": [
                             "is_adult()",
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Skull"
 					}
@@ -2762,7 +2776,7 @@ const checks = [
 						"location": "9",
 						"check": "Push Block Room",
 						"requirements": [
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Skull"
 					},
@@ -2771,7 +2785,7 @@ const checks = [
 						"location": "9",
 						"check": "Spinning Scythe Room",
 						"requirements": [
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Skull"
 					},
@@ -2780,7 +2794,7 @@ const checks = [
 						"location": "9",
 						"check": "Heart Piece Room",
 						"requirements": [
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Skull"
 					}
@@ -2899,7 +2913,7 @@ const checks = [
 						"check": "Freestanding PoH",
 						"requirements": [
                             "is_adult()",
-                            "has_item('hookshot') | has_item('beans')"
+                            "has_item('hookshot') | has_item('longshot') | has_item('beans')"
                         ],
 						"type": "Item"
 					},
@@ -2977,7 +2991,7 @@ const checks = [
 						"location": "5",
 						"check": "Map Chest",
 						"requirements": [
-							"has_item('hookshot') | has_item('bow') | has_equipment('hover_boots')"
+							"has_item('hookshot') | has_item('longshot') | has_item('bow') | has_equipment('hover_boots')"
 						],
 						"type": "Chest"
 					},
@@ -2988,7 +3002,7 @@ const checks = [
 						"requirements": [
 							"can_play('song_of_time')",
 							"has_item('bow')",
-							"has_item('hookshot')"
+							"has_item('hookshot') | has_item('longshot')"
 						],
 						"type": "Chest"
 					},
@@ -3007,7 +3021,7 @@ const checks = [
 						"location": "5",
 						"check": "Central Pillar Chest",
 						"requirements": [
-							"has_item('hookshot')",
+							"has_item('hookshot') | has_item('longshot')",
 							"has_equipment('iron_boots')",
 							"has_equipment('zoras_tunic')",
 							"has_item('bow') | can_use_fire()"
@@ -3019,7 +3033,7 @@ const checks = [
 						"location": "5",
 						"check": "Dark Link Chest",
 						"requirements": [
-							"has_item('hookshot')"
+							"has_item('hookshot') | has_item('longshot')"
 						],
 						"type": "Chest"
 					},
@@ -3041,7 +3055,7 @@ const checks = [
 						"check": "Compass Chest",
 						"requirements": [
 							"can_play('zeldas_lullaby') | has_equipment('iron_boots')",
-							"has_item('hookshot')"
+							"has_item('hookshot') | has_item('longshot')"
 						],
 						"type": "Chest"
 					},
@@ -3053,7 +3067,7 @@ const checks = [
 							"has_strength(2)",
 							"can_play('zeldas_lullaby')",
 							"has_equipment('iron_boots')",
-							"has_item('hookshot')"
+							"has_item('hookshot') | has_item('longshot')"
 						],
 						"type": "Chest"
 					},
@@ -3065,7 +3079,7 @@ const checks = [
 							"can_use_explosives()",
 							"can_play('zeldas_lullaby')",
 							"has_equipment('iron_boots')",
-							"has_item('hookshot') | has_equipment('hover_boots')"
+							"has_item('hookshot') | has_item('longshot') | has_equipment('hover_boots')"
 						],
 						"type": "Skull"
 					},
@@ -3120,7 +3134,7 @@ const checks = [
 				],
 				"access_requirements": [
                     "is_adult()",
-                    "(has_equipment('iron_boots') & has_item('hookshot')) | (has_scale(2) & has_item('longshot'))"
+                    "(has_equipment('iron_boots') & (has_item('hookshot') | has_item('longshot'))) | (has_scale(2) & has_item('longshot'))"
                 ]
 			},
 			{
@@ -3132,7 +3146,7 @@ const checks = [
 						"check": "Diving in the Lab",
 						"requirements": [
                             "is_adult()",
-                            "has_scale(2) | (has_equipment('iron_boots') & has_item('hookshot'))"
+                            "has_scale(2) | (has_equipment('iron_boots') & (has_item('hookshot') | has_item('longshot')))"
                         ],
 						"type": "Event"
 					},
@@ -3150,6 +3164,34 @@ const checks = [
 				"access_requirements": [
                     "is_adult() | (is_child() & can_leave_forest())"
                 ]
+			},
+			{
+				"area": "Fishing Hole",
+				"checks": [
+					{
+						"bits": "00001000",
+						"location": "73",
+						"check": "Fishing (Adult)",
+						"requirements": [
+                            "is_adult()",
+							"((has_item('hookshot') | has_item('longshot')) & (has_item('ocarina') | has_item('ocarina_of_time'))) | has_item('beans')"
+                        ],
+						"type": "Event"
+					},
+					{
+						"bits": "00000100",
+						"location": "73",
+						"check": "Fishing (Child)",
+						"requirements": [
+							"is_child()",
+							"can_leave_forest()"
+                        ],
+						"type": "Event"
+					}
+				],
+				"access_requirements": [
+					"is_adult() | (is_child() & can_leave_forest())"
+				]
 			}
 		],
         "backgroundColour": "#0033cc",
@@ -3183,7 +3225,7 @@ const checks = [
 						"location": "93",
 						"check": "Rooftop Chest",
 						"requirements": [
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},
@@ -3302,7 +3344,7 @@ const checks = [
 						"location": "93",
 						"check": "Top Floor",
 						"requirements": [
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Skull"
 					}
@@ -3322,7 +3364,7 @@ const checks = [
 						"requirements": [
                             "is_adult()",
                             "has_strength(2)",
-                            "has_item('bow') | has_item('hookshot')"
+                            "has_item('bow') | has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},
@@ -3444,7 +3486,7 @@ const checks = [
 						"check": "Pillar",
 						"requirements": [
                             "is_adult()",
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Skull"
 					},
@@ -3454,7 +3496,7 @@ const checks = [
 						"check": "Behind Tent",
 						"requirements": [
                             "is_adult()",
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Skull"
 					}
@@ -3544,8 +3586,8 @@ const checks = [
 						"requirements": [
                             "is_adult()",
                             "has_strength(2)",
-                            "has_item('bow') | has_item('hookshot')",
-                            "has_item('hookshot'), | can_play('zeldas_lullaby')"
+                            "has_item('bow') | has_item('hookshot') | has_item('longshot')",
+                            "has_item('hookshot') | has_item('longshot') | can_play('zeldas_lullaby')"
                         ],
 						"type": "Chest"
 					},
@@ -3556,7 +3598,7 @@ const checks = [
 						"requirements": [
                             "is_adult()",
                             "has_strength(2)",
-                            "has_item('bow') | has_item('hookshot')"
+                            "has_item('bow') | has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},
@@ -3567,7 +3609,7 @@ const checks = [
 						"requirements": [
                             "is_adult()",
                             "has_strength(2)",
-                            "has_item('bow') | has_item('hookshot')"
+                            "has_item('bow') | has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},
@@ -3578,7 +3620,7 @@ const checks = [
 						"requirements": [
                             "is_adult()",
                             "has_strength(2)",
-                            "has_item('bow') | has_item('hookshot')"
+                            "has_item('bow') | has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},
@@ -3589,9 +3631,9 @@ const checks = [
 						"requirements": [
                             "is_adult()",
                             "has_strength(2)",
-                            "has_item('bow') | has_item('hookshot')",
+                            "has_item('bow') | has_item('hookshot') | has_item('longshot')",
                             "can_play('zeldas_lullaby')",
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},
@@ -3602,9 +3644,9 @@ const checks = [
 						"requirements": [
                             "is_adult()",
                             "has_strength(2)",
-                            "has_item('bow') | has_item('hookshot')",
+                            "has_item('bow') | has_item('hookshot') | has_item('longshot')",
                             "can_play('zeldas_lullaby')",
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},
@@ -3615,7 +3657,7 @@ const checks = [
 						"requirements": [
                             "is_adult()",
                             "has_strength(2)",
-                            "has_item('bow') | has_item('hookshot')",
+                            "has_item('bow') | has_item('hookshot') | has_item('longshot')",
                             "has_equipment('mirror_shield')"
                         ],
 						"type": "Chest"
@@ -3627,7 +3669,7 @@ const checks = [
 						"requirements": [
                             "is_adult()",
                             "has_strength(2)",
-                            "has_item('bow') | has_item('hookshot')"
+                            "has_item('bow') | has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},
@@ -3638,7 +3680,7 @@ const checks = [
 						"requirements": [
                             "is_adult()",
                             "has_strength(2)",
-                            "has_item('bow') | has_item('hookshot')"
+                            "has_item('bow') | has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},
@@ -3649,7 +3691,7 @@ const checks = [
 						"requirements": [
                             "is_adult()",
                             "has_strength(2)",
-                            "has_item('bow') | has_item('hookshot')",
+                            "has_item('bow') | has_item('hookshot') | has_item('longshot')",
                             "can_play('zeldas_lullaby')"
                         ],
 						"type": "Chest"
@@ -3661,7 +3703,7 @@ const checks = [
 						"requirements": [
                             "is_adult()",
                             "has_strength(2)",
-                            "has_item('bow') | has_item('hookshot')"
+                            "has_item('bow') | has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},
@@ -3672,7 +3714,7 @@ const checks = [
 						"requirements": [
                             "is_adult()",
                             "has_strength(2)",
-                            "has_item('bow') | has_item('hookshot')",
+                            "has_item('bow') | has_item('hookshot') | has_item('longshot')",
                             "has_equipment('mirror_shield')",
                             "has_item('longshot')"
                         ],
@@ -3685,7 +3727,7 @@ const checks = [
 						"requirements": [
                             "is_adult()",
                             "has_strength(2)",
-                            "has_item('bow') | has_item('hookshot')",
+                            "has_item('bow') | has_item('hookshot') | has_item('longshot')",
                             "has_equipment('mirror_shield')",
                             "has_item('longshot')"
                         ],
@@ -3815,7 +3857,7 @@ const checks = [
 						"check": "Before Heavy Block Chest",
 						"requirements": [
                             "has_strength(2)",
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},
@@ -3825,7 +3867,7 @@ const checks = [
 						"check": "Heavy Block First Chest",
 						"requirements": [
                             "has_strength(2)",
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},
@@ -3835,7 +3877,7 @@ const checks = [
 						"check": "Heavy Block Second Chest",
 						"requirements": [
                             "has_strength(2)",
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},
@@ -3845,7 +3887,7 @@ const checks = [
 						"check": "Heavy Block Third Chest",
 						"requirements": [
                             "has_strength(2)",
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},
@@ -3855,7 +3897,7 @@ const checks = [
 						"check": "Heavy Block Back Left Chest",
 						"requirements": [
                             "has_strength(2)",
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},
@@ -3865,7 +3907,7 @@ const checks = [
 						"check": "Hammer Switch Chest",
 						"requirements": [
                             "has_item('hammer')",
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},
@@ -3874,7 +3916,7 @@ const checks = [
 						"location": "11",
 						"check": "Hammer Room Clear Chest",
 						"requirements": [
-                            "has_item('hookshot')"
+                            "has_item('hookshot') | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},
@@ -3883,7 +3925,7 @@ const checks = [
 						"location": "11",
 						"check": "Eye Statue Chest",
 						"requirements": [
-                            "has_item('hookshot')",
+                            "has_item('hookshot') | has_item('longshot')",
                             "has_item('bow')"
                         ],
 						"type": "Chest"
@@ -3893,7 +3935,7 @@ const checks = [
 						"location": "11",
 						"check": "Near Scarecrow Chest",
 						"requirements": [
-                            "(has_strength(2) & has_item('hookshot')) | has_item('longshot')"
+                            "(has_strength(2) & has_item('hookshot') | has_item('longshot')) | has_item('longshot')"
                         ],
 						"type": "Chest"
 					},

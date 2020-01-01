@@ -2,7 +2,7 @@
   <div id="wrapper">
     <main>
       <div class="container">
-        <div class="regionContainer">
+        <div class="regionContainer" v-if="!settings.items_only">
           <div class="region" v-for="region in checks" v-bind:style="{backgroundColor: region['backgroundColour'], color: region['colour']}">
             <span class="regionHeader">{{region['region']}}</span>
             <div v-for="area in region['areas']">
@@ -40,11 +40,6 @@
             <img src="../assets/images/MEGATON_HAMMER.png" v-bind:class="{dim:!has_item('hammer')}">
             <img src="../assets/images/LIGHT_ARROWS.png" v-bind:class="{dim:!has_item('light_arrow')}">
             <img src="../assets/images/NAYRUS_LOVE.png" v-bind:class="{dim:!has_item('nayrus_love')}">
-            
-            <!-- <img src="../assets/images/BOTTLE.png" v-bind:class="{dim:player.items.bottles[0] == 255}">
-            <img src="../assets/images/BOTTLE.png" v-bind:class="{dim:player.items.bottles[1] == 255}">
-            <img src="../assets/images/BOTTLE.png" v-bind:class="{dim:player.items.bottles[2] == 255}">
-            <img src="../assets/images/BOTTLE.png" v-bind:class="{dim:player.items.bottles[3] == 255}"> -->
 
             <div v-for="bottle in player.items.bottles">
               <img src="../assets/images/BOTTLE.png" v-bind:class="{dim:bottle == 255}" v-if="bottle == 255">
@@ -64,20 +59,7 @@
             </div>
 
             <div>
-              <img src="../assets/images/WEIRD_EGG.png" v-if="player.items.child_quest == 33">
-              <img src="../assets/images/CHICKEN.png" v-if="player.items.child_quest == 34">
-              <img src="../assets/images/ZELDAS_LETTER.png" v-if="player.items.child_quest == 35">
-              <img src="../assets/images/KEATON_MASK.png" v-if="player.items.child_quest == 36">
-              <img src="../assets/images/SKULL_MASK.png" v-if="player.items.child_quest == 37">
-              <img src="../assets/images/SPOOKY_MASK.png" v-if="player.items.child_quest == 38">
-              <img src="../assets/images/BUNNY_HOOD.png" v-if="player.items.child_quest == 39">
-              <img src="../assets/images/GORON_MASK.png" v-if="player.items.child_quest == 40">
-              <img src="../assets/images/ZORA_MASK.png" v-if="player.items.child_quest == 41">
-              <img src="../assets/images/GERUDO_MASK.png" v-if="player.items.child_quest == 42">
-              <img src="../assets/images/MASK_OF_TRUTH.png" v-if="player.items.child_quest == 43">
-            </div>
-
-            <div>
+              <img src="../assets/images/POCKET_EGG.png" class="dim" v-if="player.items.adult_quest == 0">
               <img src="../assets/images/POCKET_EGG.png" v-if="player.items.adult_quest == 45">
               <img src="../assets/images/POCKET_CUCCO.png" v-if="player.items.adult_quest == 46">
               <img src="../assets/images/COJIRO.png" v-if="player.items.adult_quest == 47">
@@ -89,6 +71,21 @@
               <img src="../assets/images/EYEBALL_FROG.png" v-if="player.items.adult_quest == 53">
               <img src="../assets/images/EYE_DROPS.png" v-if="player.items.adult_quest == 54">
               <img src="../assets/images/CLAIM_CHECK.png" v-if="player.items.adult_quest == 55">
+            </div>
+
+            <div>
+              <img src="../assets/images/WEIRD_EGG.png" class="dim" v-if="player.items.child_quest == 0">
+              <img src="../assets/images/WEIRD_EGG.png" v-if="player.items.child_quest == 33">
+              <img src="../assets/images/CHICKEN.png" v-if="player.items.child_quest == 34">
+              <img src="../assets/images/ZELDAS_LETTER.png" v-if="player.items.child_quest == 35">
+              <img src="../assets/images/KEATON_MASK.png" v-if="player.items.child_quest == 36">
+              <img src="../assets/images/SKULL_MASK.png" v-if="player.items.child_quest == 37">
+              <img src="../assets/images/SPOOKY_MASK.png" v-if="player.items.child_quest == 38">
+              <img src="../assets/images/BUNNY_HOOD.png" v-if="player.items.child_quest == 39">
+              <img src="../assets/images/GORON_MASK.png" v-if="player.items.child_quest == 40">
+              <img src="../assets/images/ZORA_MASK.png" v-if="player.items.child_quest == 41">
+              <img src="../assets/images/GERUDO_MASK.png" v-if="player.items.child_quest == 42">
+              <img src="../assets/images/MASK_OF_TRUTH.png" v-if="player.items.child_quest == 43">
             </div>
 
             <img src="../assets/images/KOKIRI_SWORD.png" v-bind:class="{dim:!has_equipment('kokiri_sword')}">
@@ -151,8 +148,17 @@
                 <span>{{player.skulls}}</span>
               </div>
             </div>
+
+            <div>
+              <img src="../assets/images/MAGIC.png" v-bind:class="{dim:!player.upgrades.magic}" v-if="player.upgrades.magic <= 1">
+              <img src="../assets/images/DOUBLE_MAGIC.png" v-if="player.upgrades.magic >= 2">
+            </div>
+
+            <img src="../assets/images/GERUDOS_CARD.png" v-bind:class="{dim:!has_equipment('gerudo_card')}">
+            <img src="../assets/images/STONE_OF_AGONY.png" v-bind:class="{dim:!has_equipment('stone_of_agony')}">
+
           </div>
-          <div class="logicSettings">
+          <div class="logicSettings" v-if="!settings.items_only">
             <div>
               <span>Deku Logic</span>
               <select v-model="settings.open_deku">
@@ -190,7 +196,11 @@
               </select>
             </div>
           </div>
+          <button v-on:click="toggle_checks" class="toggleButton">
+            Toggle Checks
+          </button>
         </div>
+
       </div>
     </main>
   </div>
@@ -204,6 +214,10 @@
     methods: {
       open (link) {
         this.$electron.shell.openExternal(link)
+      },
+      toggle_checks() {
+        this.settings.items_only = !this.settings.items_only
+        ipcRenderer.send('toggle_checks', (event, data) => {})
       },
       has_item (item) {
         const items = this.player.items
@@ -243,7 +257,7 @@
       can_play (song) {
         const songs = this.player.songs
         const items = this.player.items
-        return songs[song] & this.ocarina
+        return songs[song] & (items.ocarina | items.ocarina_of_time)
       },
       can_child_attack (){
         const items = this.player.items
@@ -300,8 +314,13 @@
         (
           this.settings.open_ganon == "Vanilla" &
           this.has_medallion('shadow') &
-          this.has_medallion('spirit')
-        )
+          this.has_medallion('spirit') &
+          this.has_item('light_arrow')
+        ) 
+        // (
+        //   this.settings.open_gate == "No Logic" &
+
+        // )
         // TODO: Add logic for all dungeon completion to access Ganon's Castle
         // (
         //   this.settings.open_ganon == "All Dungeons" &
@@ -342,11 +361,18 @@
         }
       },
       handleCheck(check){
+          // if (check.location == "56") {
+          //   console.log(check)
+          //   console.log(check.location + ':' + check.type + ':' + check.bits)
+          // }
+          // console.log(check.location)
+          // console.log(check)
+          // console.log(check.location + ':' + check.type + ':' + check.bits)
           if (
             !this.gottenChecks.includes(check.location + ':' + check.type + ':' + check.bits) &
             this.checkRequirements(check.requirements) & 
             check.type !== 'Skull' &
-            !check.location.includes('Cow')
+            !check.check.includes('Cow')
           ) {
             return true
           } else {
@@ -399,9 +425,9 @@
             zeldas_letter: false,
             skull_mask: false,
             mask_of_truth: false,
-            child_quest: 255,
+            child_quest: 0,
             claim_check: false,
-            adult_quest: 255
+            adult_quest: 0
           },
           is_child: true,
           skulls: 0,
@@ -446,6 +472,7 @@
             iron_boots: false,
             hover_boots: false,
             gerudo_card: false,
+            stone_of_agony: false,
           },
           upgrades: {
             scale: 0,
@@ -463,6 +490,7 @@
           open_temple: "Closed",
           open_ganon: "Medallions",
           open_gate: false,
+          items_only: false,
         },
         world: {
           deku_tree: false,
@@ -476,10 +504,8 @@
     },
     created: function() {
       ipcRenderer.send('startup', (event, data) => {})
-      console.log(this.player)
     },
     mounted () {
-      console.log(this.player)
         this.world.deku_tree = this.is_deku_open
         this.world.forest = this.is_forest_open
         this.world.temple = this.is_temple_open
@@ -590,6 +616,7 @@
           jewels.sapphire = data[11]
 
           this.player.equipments.gerudo_card = ((data[9] == 1) ? true : false)
+          this.player.equipments.stone_of_agony = ((data[10] == 1) ? true : false)
         })
         ipcRenderer.on('send_inv:upgrades', (event, data) => {
           const upgrades = this.player.upgrades
@@ -607,6 +634,9 @@
         })
         ipcRenderer.on('send_inv:age', (event, data) => {
           this.player.is_child = data[0]
+        })
+        ipcRenderer.on('send_inv:magic', (event, data) => {
+          this.player.upgrades.magic = data[0]
         })
     }
   }
@@ -628,7 +658,7 @@
     background-color: rgb(60, 0, 97);
     width: 300px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
     padding-top: 10px;
@@ -681,7 +711,7 @@
   .itemGrid {
     display: grid;
     grid-template-columns: 32px 32px 32px 32px 32px 32px;
-    grid-template-rows: 32px 32px 32px 32px;
+    grid-auto-rows: 32px;
     grid-gap: 5px;
   }
 
@@ -724,7 +754,17 @@
     justify-content: space-between;
   }
 
-  .logicSettings
+  .toggleButton {
+    width: 100%;
+    height: 40px;
+    border: none;
+    color: white;
+    background-color: rgb(78, 0, 126);
+  }
+
+  .toggleButton:hover {
+    background-color: rgb(96, 0, 156);
+  }
 
   span {
     user-select: none;
