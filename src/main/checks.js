@@ -2801,7 +2801,8 @@ const checks = [
 				],
 				"access_requirements": [
                     "is_adult()",
-                    "has_item('bottle')"
+					"has_item('bottle')",
+					"is_open('fountain')"
                 ]
 			},
 			{
