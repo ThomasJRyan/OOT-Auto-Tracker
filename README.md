@@ -22,11 +22,7 @@ An auto tracker for Ocarina of Time Randomizer
 - Broken/Missing logic
   - Graveyard Redead
 - Displays
-  - Upgrades
-  - Songs
-  - Medallions
-  - Jewels
-  - Skulltulas
+  - Wallet
 - Styling
 - Clean up code
 
