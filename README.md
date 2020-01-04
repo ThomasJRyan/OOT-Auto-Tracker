@@ -12,15 +12,11 @@ An auto tracker for Ocarina of Time Randomizer
 
 ## Todo
 - Missing checks
-  - Talon's Cuccos
   - Beating Shadow Temple
-  - Fishing child/adult
   - Biggoron Sword
   - Skulltulas
   - Cows
   - Scrubs
-- Broken/Missing logic
-  - Graveyard Redead
 - Displays
   - Wallet
 - Styling
